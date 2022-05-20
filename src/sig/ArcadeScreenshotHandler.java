@@ -3,7 +3,7 @@ package sig;
 import javax.swing.JFrame;
 import sig.engine.Panel;
 
-public class JavaProjectTemplate {
+public class ArcadeScreenshotHandler {
 	public static final String PROGRAM_NAME="Sig's Java Project Template";
 	public static void main(String[] args) {
 		JFrame f = new JFrame(PROGRAM_NAME);

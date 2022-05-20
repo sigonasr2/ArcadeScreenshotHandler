@@ -12,7 +12,7 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import sig.JavaProjectTemplate;
+import sig.ArcadeScreenshotHandler;
 
 public class Panel extends JPanel implements Runnable {
 	JFrame window;
@@ -80,7 +80,7 @@ public class Panel extends JPanel implements Runnable {
 		
 		
 		if (window!=null&&System.currentTimeMillis()-lastSecond>=1000) {
-			window.setTitle(JavaProjectTemplate.PROGRAM_NAME+" - FPS: "+(frameCount-lastFrameCount));
+			window.setTitle(ArcadeScreenshotHandler.PROGRAM_NAME+" - FPS: "+(frameCount-lastFrameCount));
 			lastFrameCount=frameCount;
 			lastSecond=System.currentTimeMillis();
 		}
