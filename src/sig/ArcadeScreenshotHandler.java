@@ -19,6 +19,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import sig.engine.Panel;
+import sig.exceptions.FailedResponseException;
+import sig.requests.POSTRequest;
+import java.net.http.HttpResponse;
 
 public class ArcadeScreenshotHandler {
 	public static Robot r;
@@ -34,11 +37,10 @@ public class ArcadeScreenshotHandler {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(e.getActionCommand());
-				BufferedImage img;
-				try {
-					img = CaptureScreen();
-					ImageIO.write(img,"png",Path.of("..","screenshot.png").toFile());
-				} catch (IOException e1) {
+				POSTRequest postRes = new POSTRequest("http://localhost:8080/uploadform.html",Path.of("..","screenshot.png"));
+            	try {
+					System.out.println(((HttpResponse<String>)postRes.run()).body());
+				} catch (FailedResponseException e1) {
 					e1.printStackTrace();
 				}
 				playSound(Path.of("..","ding.wav"));
