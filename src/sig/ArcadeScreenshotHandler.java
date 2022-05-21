@@ -40,8 +40,9 @@ public class ArcadeScreenshotHandler {
 				System.out.println(e.getActionCommand());
             	try {
 					BufferedImage img = CaptureScreen();
-					ImageIO.write(img,"png",new File("..","screenshot.png"));
-					POSTRequest postRes = new POSTRequest("http://"+args[0]+"/uploadform.html",Path.of("..","screenshot.png"));
+					String filename="screenshot"+System.currentTimeMillis()+".png";
+					ImageIO.write(img,"png",new File("..",filename));
+					POSTRequest postRes = new POSTRequest("http://"+args[0]+"/uploadform.html",Path.of("..",filename));
 					System.out.println(((HttpResponse<String>)postRes.run()).body());
 				} catch (FailedResponseException | IOException e1) {
 					e1.printStackTrace();
