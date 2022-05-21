@@ -108,33 +108,6 @@ public class Panel extends JPanel implements Runnable {
         		p[y*width+x]=(0<<16)+(0<<8)+0;
         	}
         }
-        
-        x_offset+=1;
-        y_offset=50;
-        
-        FillPolygon(p,Color.WHITE,50,50,new Point[] {
-        		new Point(135,2),
-        		new Point(166,96),
-        		new Point(265,97),
-        		new Point(185,156),
-        		new Point(215,251),
-        		new Point(134,192),
-        		new Point(54,251),
-        		new Point(84,156),
-        		new Point(4,97),
-        		new Point(103,96),
-        });
-        FillPolygon(p,Color.BRIGHT_CYAN,x_offset,y_offset,new Point[] {
-            	new Point(28,29),
-            	new Point(78,103),
-            	new Point(120,31),
-            	new Point(123,221),
-            	new Point(30,218),
-            });
-        //FillRect(p,Color.BRIGHT_RED,200,200,600,64);
-		final Color testAlpha = new Color(150,0,0,128);
-        FillCircle(p,testAlpha,150,150,100);
-        FillOval(p,Color.BRIGHT_GREEN,300,150,100,50);
     }
     
     public void FillRect(int[] p,Color col,double x,double y,double w,double h) {
