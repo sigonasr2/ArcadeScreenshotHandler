@@ -1,5 +1,6 @@
 package sig;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.awt.image.BufferedImage;
@@ -37,10 +38,12 @@ public class ArcadeScreenshotHandler {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(e.getActionCommand());
-				POSTRequest postRes = new POSTRequest("http://"+args[0]+"/uploadform.html",Path.of("..","screenshot.png"));
             	try {
+					BufferedImage img = CaptureScreen();
+					ImageIO.write(img,"png",new File("..","screenshot.png"));
+					POSTRequest postRes = new POSTRequest("http://"+args[0]+"/uploadform.html",Path.of("..","screenshot.png"));
 					System.out.println(((HttpResponse<String>)postRes.run()).body());
-				} catch (FailedResponseException e1) {
+				} catch (FailedResponseException | IOException e1) {
 					e1.printStackTrace();
 				}
 				playSound(Path.of("..","ding.wav"));
