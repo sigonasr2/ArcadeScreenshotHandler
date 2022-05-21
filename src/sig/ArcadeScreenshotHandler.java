@@ -37,7 +37,7 @@ public class ArcadeScreenshotHandler {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println(e.getActionCommand());
-				POSTRequest postRes = new POSTRequest("http://localhost:8080/uploadform.html",Path.of("..","screenshot.png"));
+				POSTRequest postRes = new POSTRequest("http://"+args[0]+"/uploadform.html",Path.of("..","screenshot.png"));
             	try {
 					System.out.println(((HttpResponse<String>)postRes.run()).body());
 				} catch (FailedResponseException e1) {
